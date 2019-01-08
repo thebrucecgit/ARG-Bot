@@ -5,11 +5,10 @@ atob = require("atob"),
 base32 = require("thirty-two"),
 morse = require("morse");
 
-const token = "NTMxOTcxMDY5NTQ5MDg0Njcz.DxVscw.dSfnT96BOy057ECCUCq7YUUgGzg"; // Client Token
+const token = <BOT TOKEN> ; // Client Token
 const client = new Discord.Client();
 
 client.on('message', msg => {
-    console.log(msg.content);
     var msgContent = msg.content;
     var command = msgContent.split(" ", 1)[0].toLowerCase();
     var content = msgContent.substring(6);
