@@ -10,7 +10,7 @@ const token = require('./token.json').token; // Client Token
 const client = new Discord.Client();
 const commands = {};
 
-fs.readdir("./cmds/", (err, files) => {
+fs.readdir("./cmds", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
