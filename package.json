@@ -1,10 +1,11 @@
 {
-  "name": "discord-app",
-  "version": "1.0.0",
+  "name": "ARG-Bot",
+  "version": "1.0.1",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js --production",
+    "watch": "./node_modules/.bin/nodemon app.js"
   },
   "author": "Bruce C",
   "license": "ISC",
