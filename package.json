@@ -1,0 +1,20 @@
+{
+  "name": "discord-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bruce C",
+  "license": "ISC",
+  "dependencies": {
+    "atob": "^2.1.2",
+    "btoa": "^1.2.1",
+    "discord.js": "^11.4.2",
+    "encodeurl": "^1.0.2",
+    "morse": "^0.1.0",
+    "request": "^2.88.0",
+    "thirty-two": "^1.0.2"
+  }
+}
