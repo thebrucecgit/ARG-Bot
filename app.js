@@ -110,7 +110,7 @@ client.on('message', msg => {
     function returnOutput(){
 		msg.channel.send("**" + commandName + "** for " + `${msg.author}` + "```" + output + "```");
     }
-	if (command && command !== "anag"){ // For Commands other than Anagram
+	if (command && command !== "anag" && command !== "help"){ // For Commands other than Anagram and Help
 		returnOutput();
 	} else if (command === "anag") {  // For Anagrams Command
 		setTimeout(function(){returnOutput()}, 1500);
