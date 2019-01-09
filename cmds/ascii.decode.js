@@ -1,8 +1,7 @@
-const encodeUrl = require('encodeurl');
 module.exports = {
   hits: ['asciide', 'asciidecode'],
   handler: (msg, content) => {
-    const res = {}
+    const res = {};
     res.commandName = "ASCII Decimal Valye to Text";
     const arr = content.split(" ");
     const hexArr = [];
@@ -14,4 +13,4 @@ module.exports = {
     res.output = hexArr.join("");
     return res;
   }
-}
+};

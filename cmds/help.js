@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 module.exports = {
   hits: ['help', 'commands', 'cmds'],
   handler: (msg, content) => {
@@ -12,4 +13,4 @@ module.exports = {
       .setColor('#2976f2');
     msg.channel.send(embed);
   }
-}
+};

@@ -1,8 +1,7 @@
-const encodeUrl = require('encodeurl');
 module.exports = {
   hits: ['asciien', 'asciiencode'],
   handler: (msg, content) => {
-    const res = {}
+    const res = {};
     res.commandName = "Text to ASCII Decimal Value";
     const arr = content.split("");
     const hexArr = [];
@@ -14,4 +13,4 @@ module.exports = {
     res.output = hexArr.join(" ");
     return res;
   }
-}
+};

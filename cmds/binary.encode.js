@@ -1,8 +1,7 @@
-const encodeUrl = require('encodeurl');
 module.exports = {
   hits: ['binen', 'binaryencode'],
   handler: (msg, content) => {
-    const res = {}
+    const res = {};
     res.commandName = "Binary Encoding";
     res.output = content.trim()
       .split("")
@@ -11,4 +10,4 @@ module.exports = {
       .join(" ");
     return res;
   }
-}
+};
