@@ -10,6 +10,7 @@
   "author": "Bruce C",
   "license": "ISC",
   "dependencies": {
+    "atbash-wizard": "0.0.2",
     "atob": "^2.1.2",
     "btoa": "^1.2.1",
     "discord.js": "^11.4.2",
