@@ -6,7 +6,7 @@ base32 = require("thirty-two"),
 morse = require("morse"),
 fs = require("fs");
 
-const token = require('./betatoken.json').token; // Client Token
+const token = require('./token.json').token; // Client Token
 const client = new Discord.Client();
 const commands = {};
 
@@ -35,7 +35,7 @@ client.on('message', msg => {
     var output;
     var commandName;
 	if (commands[command]) {
-		const result = commands[command](msg, content);
+		const result = commands[command](msg, content, client);
 		if (!result) return;
 		if (result.output) output = result.output;
 		if (result.commandName) commandName = result.commandName;
