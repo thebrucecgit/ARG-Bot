@@ -6,7 +6,7 @@ base32 = require("thirty-two"),
 morse = require("morse"),
 fs = require("fs");
 
-const token = require('./token.json').betatoken; // Client Token
+const token = require('./token.json').token; // Client Token
 const client = new Discord.Client();
 const commands = {};
 
