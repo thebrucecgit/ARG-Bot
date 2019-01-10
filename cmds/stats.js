@@ -14,11 +14,7 @@ module.exports = {
     }
     
     if (msg.member.id == 338543472099196928 || msg.member.id == 213928278497558528) {
-      var arr = [];
-      for (var i = 0; i < client.guilds.array().length; i++) {
-        arr.push(client.guilds.array()[i].name);
-      }
-      res.output = `ARG-Bot v${version} \nUsers: ${client.users.size} \nChannels: ${client.channels.size} \nGuilds: ${client.guilds.size} \nUptime: ${uptime()} \n\nGuilds Using ARG-Bot: \n${arr.join(" \n")}`;
+      res.output = `ARG-Bot v${version} \nUsers: ${client.users.size} \nChannels: ${client.channels.size} \nGuilds: ${client.guilds.size} \nUptime: ${uptime()}`;
     }
     res.commandName = "Statistics";
     return res;
