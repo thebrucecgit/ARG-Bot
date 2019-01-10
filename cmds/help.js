@@ -9,8 +9,9 @@ module.exports = {
       .addField('!MoEn or !MoDe', 'Morse Code Encoding or Decoding', true)
       .addField('!binEn or binDe', 'Binary Encoding or Decoding', true)
       .addField('!ASCIIEn or !ASCIIDe', 'Text to ASCII Decimal or vice versa', true)
-      .addField('!Anag', 'Finding English Anagrams', true)
       .addField('!Atbash or !atb', 'At-bash Encode and Decode', true)
+      .addField('!Rot13 or !Rot', 'Rot13 Encode and Decode', true)
+      .addField('!Anag', 'Finding English Anagrams', true)
       .setColor('#2976f2');
     msg.channel.send(embed);
   }

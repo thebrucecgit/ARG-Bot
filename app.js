@@ -6,7 +6,7 @@ base32 = require("thirty-two"),
 morse = require("morse"),
 fs = require("fs");
 
-const token = require('./token.json').token; // Client Token
+const token = require('./betatoken.json').token; // Client Token
 const client = new Discord.Client();
 const commands = {};
 
@@ -24,6 +24,7 @@ fs.readdir("./cmds", (err, files) => {
   console.log(`Commands loaded.`);
 });
 client.on('message', msg => {
+	client.user.setActivity("!help for commands", {type: "WATCHING"}); 
     var msgContent = msg.content.split(" ");
     var command, content;
     if (msgContent[0].substring(0, 1) === "!") {
