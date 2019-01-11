@@ -12,6 +12,7 @@ module.exports = {
       .addField('!Atbash or !atb', 'At-bash Encode and Decode', true)
       .addField('!Rot13 or !Rot', 'Rot13 Encode and Decode', true)
       .addField('!Anag', 'Finding English Anagrams', true)
+      .setFooter("https://github.com/thebrucecgit/ARG-Bot")
       .setColor('#2976f2');
     msg.channel.send(embed);
   }
