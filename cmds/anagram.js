@@ -3,7 +3,7 @@ request = require("request");
 
 module.exports = {
   hits: ['anag', 'anagram', 'nag-a-ram'],
-  handler: (msg, content) => {
+  handler: (msg, content, client) => {
     const commandName = "Anagrams";
     function returnOutput(output){
     	msg.channel.send("**" + commandName + "** for " + `${msg.author}` + "```" + output + "```");
@@ -15,7 +15,10 @@ module.exports = {
 			} else {
 				var anagrams = JSON.parse(body).all.join(", \n");
 				const output = anagrams;
-        returnOutput(output)
+        msg.returnOutput(client, {
+          commandName,
+          output
+        })
 			}
 		});
   }

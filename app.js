@@ -1,56 +1,62 @@
 const Discord = require("discord.js"),
-btoa = require("btoa"),
-encodeUrl = require("encodeurl"),
-atob = require("atob"),
-base32 = require("thirty-two"),
-morse = require("morse"),
-fs = require("fs");
+  fs = require("fs"),
+  config = require('./config.json'),
+  token = require('./token.json').token,
+  client = new Discord.Client(),
+  commands = {},
+  msgLoader = require('./src/msg.js');
 
-const token = require('./token.json').token; // Client Token
-const client = new Discord.Client();
-const commands = {};
-
+/* Command Loader
+ * Any problems: See dathsheep.
+ */
+ // Loads all the files in 'cmds/'
 fs.readdir("./cmds", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
+    // If file is not a JS file skip.
     if (!file.endsWith(".js")) return;
-
+    // Loads the command into memory.
     const command = require(`./cmds/${file}`);
-
+    // Loops through all of the words that will trigger the command.
     for (var i = 0; i < command.hits.length; i++) {
+      // Adds them to the command object, with the triggering word..
+      // as the key that to the object. The object is the function..
+      // that handles the command.
       commands[command.hits[i]] = command.handler;
     }
   });
   console.log(`Commands loaded.`);
 });
 client.on('message', msg => {
-	client.user.setActivity("!help for commands", {type: "WATCHING"}); 
-    var msgContent = msg.content.split(" ");
-    var command, content;
-    if (msgContent[0].substring(0, 1) === "!") {
-        command = msgContent[0].substring(1).toLowerCase();
-        content = msgContent.slice(1);
-        content = content.join(" ");
-    }
-    var output;
-    var commandName;
+  // Loads additions.
+  msgLoader.load(msg);
+  // Command Parsing
+  let msgContent = msg.content.split(" ");
+  let command, content;
+  if (msgContent[0].substring(0, 1) === "!") {
+    command = msgContent[0].substring(1).toLowerCase();
+    content = msgContent.slice(1);
+    content = content.join(" ");
+  }
+  let output,
+    commandName,
+    result;
+  // If the command is in the commands object:
 	if (commands[command]) {
-		const result = commands[command](msg, content, client);
+    // Fires the function associated to the command.
+		result = commands[command](msg, content, client);
+    // If the command returns anything, bot replies with results.
 		if (!result) return;
 		if (result.output) output = result.output;
 		if (result.commandName) commandName = result.commandName;
 	}
-    
-	function returnOutput(){
-		msg.channel.send("**" + commandName + "** for " + `${msg.author}` + "```" + output + "```");
-	}
-    if (command && output != undefined){ // For Commands other than Anagram
-    	returnOutput();
+    if (command && output != undefined){
+    	msg.returnOutput(msg, result);
     }
 });
 client.on("ready", () => {
     console.log("Bot is connected");
-    // client.channels.find(x => x.name === "bot-channel").send("Hello! I\'m now connected");
+    client.user.setActivity(config.bot.statusMessage, {type: "WATCHING"});
 });
 
 client.login(token);
