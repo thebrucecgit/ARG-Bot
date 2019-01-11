@@ -10,7 +10,7 @@ module.exports = {
         msg.reply('Critical Request Error');
 				return console.log(err);
 			} else {
-				var anagrams = JSON.parse(body).all.join(", \n");
+				var anagrams = JSON.parse(body).all.slice(0, 8).join(", \n");
 				const output = anagrams;
         msg.returnOutput(client, {
           commandName,
