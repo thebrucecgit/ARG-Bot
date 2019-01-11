@@ -11,12 +11,8 @@ function authorIsAdmin() {
   return false;
 }
 function returnOutput(msg, result){
-  this.channel.send(new Discord.RichEmbed()
-    .setTitle(result.commandName)
-    .setAuthor('ARG Bot', this.client.user.avatarURL)
-    .setFooter(`Requested by: ${this.author.username}#${this.author.discriminator}`)
-    .setDescription(`\`\`\`${result.output}\`\`\``)
-    .setTimestamp(new Date())
-    .setColor(config.bot.embedColor)
-  )
+  this.channel.send(
+  `\`${result.commandName}\`\n` +
+  `\`\`\`` + result.output + `\`\`\`` +
+  '**Requested by:** ' + msg.author)
 }
