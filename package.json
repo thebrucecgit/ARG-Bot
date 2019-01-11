@@ -8,6 +8,9 @@
     "watch": "./node_modules/.bin/nodemon app.js"
   },
   "author": "Bruce C",
+  "contributors": [
+    "Max Rumsey <max@maxrumsey.xyz> (maxrumsey.xyz)"
+  ],
   "license": "ISC",
   "dependencies": {
     "atbash-wizard": "0.0.2",
@@ -18,6 +21,7 @@
     "encodeurl": "^1.0.2",
     "morse": "^0.1.0",
     "request": "^2.88.0",
+    "rot": "^0.1.0",
     "thirty-two": "^1.0.2"
   }
 }

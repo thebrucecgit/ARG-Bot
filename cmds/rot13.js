@@ -1,6 +1,6 @@
 const ebg13 = require('ebg13');
 module.exports = {
-  hits: ['rot13', 'rot'],
+  hits: ['rot13'],
   handler: (msg, content) => {
     const res = {};
     res.commandName = "Rot13";
