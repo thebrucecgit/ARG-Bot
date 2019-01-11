@@ -10,8 +10,9 @@ module.exports = {
       .addField('!binEn or binDe', 'Binary Encoding or Decoding', true)
       .addField('!ASCIIEn or !ASCIIDe', 'Text to ASCII Decimal or vice versa', true)
       .addField('!Atbash or !atb', 'At-bash Encode and Decode', true)
-      .addField('!Rot13 or !Rot', 'Rot13 Encode and Decode', true)
+      .addField('!Rot13', 'Rot13 Encode and Decode', true)
       .addField('!Anag', 'Finding English Anagrams', true)
+      .addField('!Rot [1-26]', 'Rotate a cypher if you know the key.', true)
       .setFooter("https://github.com/thebrucecgit/ARG-Bot")
       .setColor('#2976f2');
     msg.channel.send(embed);
