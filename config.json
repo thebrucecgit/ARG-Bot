@@ -1,6 +1,6 @@
 {
   "bot": {
-    "statusMessage": "",
+    "statusMessage": "!help for commands",
     "embedColor": "#7289DA"
   },
   "admins": [
