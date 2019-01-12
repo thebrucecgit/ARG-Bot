@@ -4,7 +4,8 @@ const Discord = require("discord.js"),
   token = require('./token.json').token,
   client = new Discord.Client(),
   commands = {},
-  msgLoader = require('./src/msg.js');
+  msgLoader = require('./src/msg.js'),
+  nanoid = require('nanoid');
 
 /* Command Loader
  * Any problems: See dathsheep.
@@ -45,7 +46,21 @@ client.on('message', msg => {
   // If the command is in the commands object:
 	if (commands[command]) {
     // Fires the function associated to the command.
-		result = commands[command](msg, content, client);
+    try {
+		  result = commands[command](msg, content, client);
+    } catch (e) {
+      const id = nanoid(7);
+      console.log('Error: ID:' + id + ' ' + e.message);
+      console.log('ID: ' + id + ' | ' + msg.content)
+      console.error(e);
+      return msg.channel.send(new Discord.RichEmbed()
+        .setTitle('Error')
+        .setColor('#FF0000')
+        .setDescription('An error has occured while executing your command. Please notify our support server ASAP of how this error occured.')
+        .addField('Message', e.message)
+        .addField('Support Server', 'https://discord.gg/uDNJGxQ')
+      )
+    }
     // If the command returns anything, bot replies with results.
 		if (!result) return;
 		if (result.output) output = result.output;
