@@ -16,6 +16,7 @@
     "atbash-wizard": "0.0.2",
     "atob": "^2.1.2",
     "btoa": "^1.2.1",
+    "dblapi.js": "^2.3.0",
     "discord.js": "^11.4.2",
     "encodeurl": "^1.0.2",
     "got": "^9.5.0",
