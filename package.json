@@ -1,6 +1,6 @@
 {
   "name": "ARG-Bot",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -21,6 +21,8 @@
     "encodeurl": "^1.0.2",
     "got": "^9.5.0",
     "morse": "^0.1.0",
+    "nanoid": "^2.0.0",
+    "request": "^2.88.0",
     "rot": "^0.1.0",
     "thirty-two": "^1.0.2",
     "wikijs": "^5.0.0-alpha.1"

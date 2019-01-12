@@ -5,6 +5,7 @@ module.exports = {
     const res = {};
     res.commandName = "Morse Decoding";
     res.output = morse.decode(content);
+    res.input = content;
     return res;
   }
 };

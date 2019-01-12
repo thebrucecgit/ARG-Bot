@@ -5,6 +5,7 @@ module.exports = {
     const res = {};
     res.commandName = "Base64 Decoding";
     res.output = atob(content);
+    res.input = content;
     return res;
   }
 };

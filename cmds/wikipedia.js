@@ -9,8 +9,9 @@ module.exports = {
       const info = await (await wikijs().page(content)).summary();
       msg.channel.send(new discord.RichEmbed()
         .setTitle('Wikipedia')
-        .setDescription(info.substr(0, 750) + '...')
+        .addField('Output', info.substr(0, 750) + '...')
         .addField(`Link`, `https://en.wikipedia.org/wiki/${content.split(' ').join('_')}`)
+        .addField('Input', content)
         .setColor(config.bot.embedColor)
       )
     } catch (e) {

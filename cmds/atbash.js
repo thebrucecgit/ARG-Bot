@@ -4,6 +4,7 @@ module.exports = {
   handler: (msg, content) => {
     const res = {};
     res.commandName = "Atbash-ing";
+    res.input = content;
     var params = {
         word: content,
         simon: true
@@ -12,7 +13,7 @@ module.exports = {
         if (err) {
             console.log(err);
         } else {
-            res.output = data; 
+            res.output = data;
         }
     });
     return res;

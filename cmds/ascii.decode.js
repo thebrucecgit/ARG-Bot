@@ -11,6 +11,7 @@ module.exports = {
     }
 
     res.output = hexArr.join("");
+    res.input = content
     return res;
   }
 };

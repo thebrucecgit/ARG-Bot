@@ -2,6 +2,7 @@ const config = require('../config.json')
 const Discord = require('discord.js')
 module.exports = {
   load: function(msg) {
+    msg.commandStarted = (new Date()).getTime();
     msg.authorIsAdmin = authorIsAdmin;
     msg.authorIsDev = authorIsDev;
     msg.returnOutput = returnOutput;
@@ -16,8 +17,17 @@ function authorIsDev() {
   return false;
 }
 function returnOutput(msg, result){
-  this.channel.send(
-  `\`${result.commandName}\`\n` +
-  `\`\`\`` + result.output + `\`\`\`` +
-  '**Requested by:** ' + msg.author)
+  const timeTaken = (new Date().getTime() - msg.commandStarted);
+  let response = [
+    '```xl',
+    `"Type": "${result.commandName}"`,
+    `"Output":`,
+    `${result.output}`,
+    `"Input"`,
+    `${result.input || 'Not available'}`,
+    `"Time Taken": "${timeTaken}ms"`,
+    '```'
+  ].join('\n')
+  msg.channel.send(msg.author.toString())
+  msg.channel.send(response)
 }

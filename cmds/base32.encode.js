@@ -4,6 +4,7 @@ module.exports = {
   handler: (msg, content) => {
     const res = {};
     res.commandName = "Base32 Encoding";
+    res.input = content;
     res.output = base32.encode(content);
     return res;
   }

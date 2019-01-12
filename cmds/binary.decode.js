@@ -6,6 +6,7 @@ module.exports = {
     res.output = content.trim().split(" ")
       .map(item => String.fromCharCode(parseInt(item, 2)))
       .join("");
+    res.input = content;
     return res;
   }
 };
