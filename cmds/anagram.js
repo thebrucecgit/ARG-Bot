@@ -14,7 +14,8 @@ module.exports = {
 				const output = anagrams;
         msg.returnOutput(client, {
           commandName,
-          output
+          output,
+          input: content
         });
 			}
 		});

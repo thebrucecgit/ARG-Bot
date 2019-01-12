@@ -5,6 +5,7 @@ module.exports = {
     const res = {};
     res.commandName = "Base64 Encoding";
     res.output = btoa(content);
+    res.input = content;
     return res;
   }
 };

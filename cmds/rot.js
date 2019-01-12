@@ -16,6 +16,7 @@ module.exports = {
     text = text.join(' ')
     res.output = rot(text, cypher);
     res.commandName = `Rot${cypher} Cypher`
+    res.input = text;
     return res;
   }
 };

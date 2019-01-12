@@ -8,6 +8,7 @@ module.exports = {
       .map(item => ("0000000" + item.charCodeAt().toString(2))
       .split("").slice(-8).join(""))
       .join(" ");
+    res.input = content;
     return res;
   }
 };

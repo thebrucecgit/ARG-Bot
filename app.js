@@ -28,6 +28,7 @@ fs.readdir("./cmds", (err, files) => {
   console.log(`Commands loaded.`);
 });
 client.on('message', msg => {
+  if (msg.author.bot) return;
   // Loads additions.
   msgLoader.load(msg);
   // Command Parsing
