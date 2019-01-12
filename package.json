@@ -7,11 +7,11 @@
     "start": "node app.js --production",
     "watch": "./node_modules/.bin/nodemon app.js"
   },
-  "author": "Bruce C",
+  "author": "Bruce C <thebrucecemail@gmail.com>",
   "contributors": [
     "Max Rumsey <max@maxrumsey.xyz> (maxrumsey.xyz)"
   ],
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "atbash-wizard": "0.0.2",
     "atob": "^2.1.2",
