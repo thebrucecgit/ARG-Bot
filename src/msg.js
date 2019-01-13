@@ -20,14 +20,14 @@ function returnOutput(msg, result){
   const timeTaken = (new Date().getTime() - msg.commandStarted);
   let response = [
     '```xl',
-    `"Type": "${result.commandName}"`,
-    `"Output":`,
-    `${result.output}`,
+    `"Type": ${result.commandName}`,
     `"Input"`,
     `${result.input || 'Not available'}`,
     `"Time Taken": "${timeTaken}ms"`,
+    `"Output":`,
+    `${result.output}`,
     '```'
   ].join('\n')
-  msg.channel.send(msg.author.toString())
-  msg.channel.send(response)
+  msg.channel.send(msg.author.toString());
+  msg.channel.send(response);
 }

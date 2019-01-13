@@ -8,16 +8,16 @@ module.exports = {
     (async () => {
       try {
           const response = await got(encodeUrl("http://anagramica.com/all/" + content));
-  				var anagrams = JSON.parse(response.body).all.slice(0, 8).join(", \n");
+          var anagrams = JSON.parse(response.body).all.slice(0, 8).join(", \n");
   				const output = anagrams;
-          msg.returnOutput(client, {
+          msg.returnOutput(msg, {
             commandName,
             output,
             input: content
           });
       } catch (error) {
-          msg.reply(error.response.body);
-          console.log(error.response.body);
+          msg.reply(error.response);
+          console.log(error);
       }
     })();
   }
