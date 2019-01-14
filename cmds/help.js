@@ -12,6 +12,8 @@ module.exports = {
       .addField('!Atbash or !atb', "At-bash Encode and Decode  ", true)
       .addField('!Anag', "Finding English Anagrams   ", true)
       .addField('!Rot [1-26]', "Rotate a cypher w/ key     ", true)
+      .addField('!RT or !RevText', "Reverse the text           ", true)
+      .addField('!Uppercase or !upc', 'Return Uppercase Letters   ')
       .addField('!Wikipedia', "Search Wikipedia           ", true)
       .addField('!ping', "Pings Server               ", true)
       .setFooter("https://github.com/thebrucecgit/ARG-Bot")
