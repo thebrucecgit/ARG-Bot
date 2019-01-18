@@ -1,10 +1,10 @@
 const Discord = require("discord.js"),
   fs = require("fs"),
   config = require('./config.json'),
-  token = require('./token.json').token,
+  token = require(process.env.TOKEN),
   client = new Discord.Client(),
   DBL = require("dblapi.js"),
-  dbl = new DBL(require("./token.json").dbapikey, client),
+  dbl = new DBL(require(process.env.dbapikey), client),
   commands = {},
   msgLoader = require('./src/msg.js'),
   nanoid = require('nanoid');
