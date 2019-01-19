@@ -1,10 +1,11 @@
+require('dotenv').config();
 const Discord = require("discord.js"),
   fs = require("fs"),
   config = require('./config.json'),
-  token = require(process.env.TOKEN),
+  token = process.env.TOKEN,
   client = new Discord.Client(),
   DBL = require("dblapi.js"),
-  dbl = new DBL(require(process.env.dbapikey), client),
+  dbl = new DBL(process.env.dbapikey, client),
   commands = {},
   msgLoader = require('./src/msg.js'),
   nanoid = require('nanoid');
