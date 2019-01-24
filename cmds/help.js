@@ -16,7 +16,7 @@ module.exports = {
       .addField('!Uppercase or !upc', 'Return Uppercase Letters   ')
       .addField('!Wikipedia', "Search Wikipedia           ", true)
       .addField('!ping', "Pings Server               ", true)
-      .setFooter("https://github.com/thebrucecgit/ARG-Bot")
+      .setFooter("https://thebrucecgit.github.io/ARG-Bot/")
       .setColor('#2976f2');
     msg.channel.send(embed);
   }
