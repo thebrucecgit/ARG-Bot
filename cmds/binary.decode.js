@@ -5,7 +5,7 @@ module.exports = {
     res.commandName = "Binary Decoding";
     res.output = content.trim().split(" ")
       .map(item => String.fromCharCode(parseInt(item, 2)))
-      .join("");
+      .join("").replace('@', '!');
     res.input = content;
     return res;
   }

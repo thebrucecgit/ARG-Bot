@@ -5,7 +5,7 @@ module.exports = {
     const res = {};
     res.commandName = "Base32 Decoding";
     res.input = content;
-    res.output = base32.decode(content);
+    res.output = base32.decode(content).replace('@', '!');
     return res;
   }
 };

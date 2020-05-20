@@ -4,7 +4,7 @@ module.exports = {
   handler: (msg, content) => {
     const res = {};
     res.commandName = "Base64 Decoding";
-    res.output = atob(content);
+    res.output = atob(content).replace('@', '!');
     res.input = content;
     return res;
   }

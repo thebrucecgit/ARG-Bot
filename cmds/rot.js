@@ -14,7 +14,7 @@ module.exports = {
     let text = content.split(' ')
     text.shift();
     text = text.join(' ')
-    res.output = rot(text, cypher);
+    res.output = rot(text, cypher).replace('@', '!');
     res.commandName = `Rot${cypher} Cypher`
     res.input = text;
     return res;

@@ -10,7 +10,7 @@ module.exports = {
         hexArr.push(String.fromCharCode(arr[i]));
     }
 
-    res.output = hexArr.join("");
+    res.output = hexArr.join("").replace('@', '!');
     res.input = content
     return res;
   }

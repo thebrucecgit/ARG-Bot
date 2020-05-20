@@ -4,7 +4,7 @@ module.exports = {
   handler: (msg, content) => {
     const res = {};
     res.commandName = "Morse Decoding";
-    res.output = morse.decode(content);
+    res.output = morse.decode(content).replace('@', '!');
     res.input = content;
     return res;
   }
