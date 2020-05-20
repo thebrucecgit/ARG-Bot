@@ -13,7 +13,7 @@ module.exports = {
         if (err) {
             console.log(err);
         } else {
-            res.output = data;
+            res.output = data.replace('@', '!');
         }
     });
     return res;

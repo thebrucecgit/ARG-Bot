@@ -13,7 +13,7 @@ module.exports = {
             const response = await got(encodeUrl("http://anagramica.com/best/" + content));
             if (JSON.parse(response.body).best[0] !== undefined){
               var anagrams = JSON.parse(response.body).best.slice(0, 8).join(", \n");
-              returnOutput(anagrams);
+              returnOutput(anagrams).replace('@', '!');
             } else {
               returnOutput("No anagrams were found \nThis does not find multi-word anagrams");
             }

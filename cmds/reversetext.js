@@ -8,7 +8,7 @@ module.exports = {
     arr.forEach(function(char){
         newArr.unshift(char);
     });
-    res.output = newArr.join("");
+    res.output = newArr.join("").replace('@', '!');
     res.input = content;
     return res;
   }

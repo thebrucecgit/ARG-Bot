@@ -11,7 +11,7 @@ module.exports = {
             res.output.push(arr[i]);
         }
     }
-    res.output = res.output.join("");
+    res.output = res.output.join("").replace('@', '!');
     res.input = content;
     return res;
   }
