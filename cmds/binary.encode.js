@@ -1,14 +1,13 @@
+const BaseCommand = require("../src/BaseCommand");
 module.exports = {
   hits: ['binen', 'binaryencode'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Binary Encoding";
-    res.output = content.trim()
+  name: "Binary Encoding",
+  handler: (content) => {
+    const output = content.trim()
       .split("")
       .map(item => ("0000000" + item.charCodeAt().toString(2))
       .split("").slice(-8).join(""))
       .join(" ");
-    res.input = content;
-    return res;
+    return new BaseCommand(content, output);
   }
 };

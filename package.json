@@ -17,15 +17,14 @@
     "atob": "^2.1.2",
     "btoa": "^1.2.1",
     "dblapi.js": "^2.3.0",
-    "discord.js": "^11.4.2",
-    "dotenv": "^6.2.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
     "encodeurl": "^1.0.2",
-    "got": "^9.5.0",
+    "got": "^11.8.1",
     "morse": "^0.1.0",
-    "nanoid": "^2.0.0",
-    "request": "^2.88.0",
+    "nanoid": "^3.1.20",
     "rot": "^0.1.0",
     "thirty-two": "^1.0.2",
-    "wikijs": "^5.0.0-alpha.1"
+    "wikijs": "^6.0.1"
   }
 }

@@ -1,11 +1,7 @@
 const atob = require('atob');
+const BaseCommand = require('../src/BaseCommand');
 module.exports = {
   hits: ['b64de', 'base64de', 'base64decode'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Base64 Decoding";
-    res.output = atob(content).replace('@', '!');
-    res.input = content;
-    return res;
-  }
+  name: "Base64 Decoding",
+  handler: (content) => new BaseCommand(content, atob(content)),
 };

@@ -1,11 +1,7 @@
+const BaseCommand = require("../src/BaseCommand");
 const morse = require('morse');
 module.exports = {
   hits: ['moen', 'morseen', 'morseencode'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Morse Encoding";
-    res.output = morse.encode(content);
-    res.input = content;
-    return res;
-  }
+  name: "Morse Encoding",
+  handler: (content) => new BaseCommand(content, morse.encode(content))
 };

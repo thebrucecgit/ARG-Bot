@@ -1,17 +1,8 @@
+const BaseCommand = require("../src/BaseCommand");
 module.exports = {
   hits: ['asciien', 'asciiencode'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Text to ASCII Decimal Value";
-    const arr = content.split("");
-    const hexArr = [];
-
-    for (var i = 0; i < arr.length; i++) {
-        hexArr.push(arr[i].charCodeAt(0));
-    }
-
-    res.output = hexArr.join(" ");
-    res.input = content;
-    return res;
+  name: "Text to ASCII Decimal Value",
+  handler: (content) => {
+    return new BaseCommand(content, content.split("").map(x => x.charCodeAt(0)).join(" "));
   }
 };

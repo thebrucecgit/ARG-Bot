@@ -1,15 +1,12 @@
+const BaseCommand = require("../src/BaseCommand");
 module.exports = {
   hits: ['reversetext', 'revtext', 'rt'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Reverse Text";
-    var arr = content.split("");
-    var newArr = [];
-    arr.forEach(function(char){
-        newArr.unshift(char);
-    });
-    res.output = newArr.join("").replace('@', '!');
-    res.input = content;
-    return res;
+  name: "Reverse Text",
+  handler: (content) => {
+    const arr = content.split("");
+    const newArr = new Array(arr.length);
+    for (let i in arr)
+      newArr[arr.length - i] = arr[i];
+    return new BaseCommand(content, newArr.join(""));
   }
 };

@@ -1,11 +1,7 @@
 const morse = require('morse');
+const BaseCommand = require("../src/BaseCommand");
 module.exports = {
   hits: ['mode', 'morsede', 'morsedecode'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Morse Decoding";
-    res.output = morse.decode(content).replace('@', '!');
-    res.input = content;
-    return res;
-  }
+  name: "Morse Decoding",
+  handler: (content) => new BaseCommand(content, morse.decode(content)),
 };

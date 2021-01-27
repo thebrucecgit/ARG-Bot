@@ -1,11 +1,15 @@
 const version = require("../package.json").version;
+const { MessageEmbed } = require("discord.js");
 module.exports = {
   hits: ['stats', "info"],
-  handler: (msg, content, client) => {
-    return {
-      output: `ARG-Bot v${version} \nUsers: ${client.users.size} \nChannels: ${client.channels.size} \nGuilds: ${client.guilds.size} \nUptime: ${uptime(client)}`,
-      commandName: "Statistics",
-    };
+  name: "Statistics",
+  handler: (content, client) => {
+    return new MessageEmbed()
+      .setDescription(`ARG-Bot v${version}`)
+      .addField("Users", Object.keys(client.users).length, true)
+      .addField("Channels", Object.keys(client.channels).length, true)
+      .addField("Guilds", Object.keys(client.guilds).length, true)
+      .addField("Uptime", uptime(client));
   }
 };
 function uptime(client) {

@@ -1,18 +1,15 @@
+const BaseCommand = require("../src/BaseCommand");
+
 module.exports = {
   hits: ['upc', 'uppercase', 'upcase'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Uppercase Letters Only";
-    res.output = [];
-    var arr = content.trim().split("");
-    var letters = /^[A-Za-z]+$/;
-    for (var i = 0; i < arr.length; i++) {
-        if(arr[i].match(letters) && arr[i] === arr[i].toUpperCase()) {
-            res.output.push(arr[i]);
-        }
+  name: "Uppercase Letters Only",
+  handler: (content) => {
+    const output = [];
+    const letters = /^[A-Za-z]+$/;
+    for (let i = 0; i < content.length; i++) {
+      if (content[i].match(letters) && content[i] === content[i].toUpperCase())
+        output.push(content[i]);
     }
-    res.output = res.output.join("").replace('@', '!');
-    res.input = content;
-    return res;
+    return new BaseCommand(content, output.join(""));
   }
 };

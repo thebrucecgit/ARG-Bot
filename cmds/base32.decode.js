@@ -1,11 +1,7 @@
 const base32 = require('thirty-two');
+const BaseCommand = require('../src/BaseCommand');
 module.exports = {
   hits: ['b32de', 'base32de', 'base32decode'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = "Base32 Decoding";
-    res.input = content;
-    res.output = base32.decode(content).replace('@', '!');
-    return res;
-  }
+  name: "Base32 Decoding",
+  handler: (content) => new BaseCommand(content, base32.decode(content)),
 };

@@ -1,10 +1,8 @@
-
+const { MessageEmbed } = require("discord.js");
 module.exports = {
   hits: ['ping', 'pong'],
-  handler: (msg, content) => {
-    const res = {};
-    res.commandName = `Ping`,
-    res.output = `If you are reading this the bot is online.`
-    return res;
-  }
+  name: "Ping",
+  handler: (content, client, msg) => {
+    return new MessageEmbed().setDescription(`The bot is online. ${new Date() - msg.createdAt}ms`);
+  },
 };
