@@ -50,7 +50,7 @@ client.on('message', async (msg) => {
   let msgContent = msg.content.split(" ");
   if (msgContent[0].substring(0, 1) !== "!") return;
   const commandHit = msgContent[0].substring(1).toLowerCase();
-  const content = msgContent.slice(1).join(" ");
+  const content = msgContent.slice(1).join(" ").trim();
 
   // Return if the command does not exist
   if (!keys.has(commandHit)) return;
