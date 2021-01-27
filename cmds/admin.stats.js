@@ -2,13 +2,10 @@ const version = require("../package.json").version;
 module.exports = {
   hits: ['stats', "info"],
   handler: (msg, content, client) => {
-    const res = {};
-
-    if (msg.authorIsAdmin()) {
-      res.output = `ARG-Bot v${version} \nUsers: ${client.users.size} \nChannels: ${client.channels.size} \nGuilds: ${client.guilds.size} \nUptime: ${uptime(client)}`;
-    }
-    res.commandName = "Statistics";
-    return res;
+    return {
+      output: `ARG-Bot v${version} \nUsers: ${client.users.size} \nChannels: ${client.channels.size} \nGuilds: ${client.guilds.size} \nUptime: ${uptime(client)}`,
+      commandName: "Statistics",
+    };
   }
 };
 function uptime(client) {

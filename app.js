@@ -6,9 +6,11 @@ const Discord = require("discord.js"),
   client = new Discord.Client(),
   DBL = require("dblapi.js"),
   dbl = new DBL(process.env.dbapikey, client),
-  commands = {},
   msgLoader = require('./src/msg.js'),
   nanoid = require('nanoid');
+
+const commands = {};
+const perms = {};
 
 /* Command Loader
  * Any problems: See dathsheep.
@@ -26,11 +28,15 @@ fs.readdir("./cmds", (err, files) => {
       // Adds them to the command object, with the triggering word..
       // as the key that to the object. The object is the function..
       // that handles the command.
+      if (file.startsWith("dev")) perms[command.hits[i]] = "dev";
+      else if (file.startsWith("admin")) perms[command.hits[i]] = "admin";
+      else perms[command.hits[i]] = "all";
       commands[command.hits[i]] = command.handler;
     }
   });
   console.log(`Commands loaded.`);
 });
+
 client.on('message', msg => {
   if (msg.author.bot) return;
   // Loads additions.
@@ -50,7 +56,10 @@ client.on('message', msg => {
 	if (commands[command]) {
     // Fires the function associated to the command.
     try {
-		  result = commands[command](msg, content, client);
+      if (perms[command] == "all" || perms[command] == "dev" && (msg.authorIsAdmin || msg.authorIsDev) || perms[command] == "admin" && msg.authorIsAdmin)
+        result = commands[command](msg, content, client);
+      else
+        throw new Error(`Insufficient permissions. You need to be ${perms[command]}.`);
     } catch (e) {
       const id = nanoid(7);
       console.log('Error: ID:' + id + ' ' + e.message);
@@ -68,14 +77,14 @@ client.on('message', msg => {
 		if (!result) return;
 		if (result.output) output = result.output;
 		if (result.commandName) commandName = result.commandName;
-	}
-    if (command && output != undefined){
-    	msg.returnOutput(msg, result);
-    }
+  }
+  
+  if (command && output != undefined) msg.returnOutput(msg, result);
 });
+
 client.on("ready", () => {
-    console.log("Bot is connected");
-    client.user.setActivity(config.bot.statusMessage, {type: "WATCHING"});
+  console.log("Bot is connected");
+  client.user.setActivity(config.bot.statusMessage, {type: "WATCHING"});
 });
 
 client.login(token);

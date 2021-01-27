@@ -1,21 +1,14 @@
 const config = require('../config.json')
 const Discord = require('discord.js')
 module.exports = {
-  load: function(msg) {
+  load: (msg) => {
     msg.commandStarted = (new Date()).getTime();
-    msg.authorIsAdmin = authorIsAdmin;
-    msg.authorIsDev = authorIsDev;
+    msg.authorIsAdmin = config.admins.includes(msg.author.id);
+    msg.authorIsDev = config.devs.includes(msg.author.id);
     msg.returnOutput = returnOutput;
   }
 }
-function authorIsAdmin() {
-  if (config.admins.includes(this.member.id)) return true;
-  return false;
-}
-function authorIsDev() {
-  if (config.devs.includes(this.member.id)) return true;
-  return false;
-}
+
 function returnOutput(msg, result){
   const timeTaken = (new Date().getTime() - msg.commandStarted);
   let response = [
@@ -28,6 +21,5 @@ function returnOutput(msg, result){
     `${result.output}`,
     '```'
   ].join('\n')
-  msg.channel.send(msg.author.toString());
-  msg.channel.send(response);
+  msg.channel.send(msg.author.toString() + response);
 }
