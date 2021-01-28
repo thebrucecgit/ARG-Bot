@@ -4,6 +4,7 @@ const token = process.env.TOKEN;
 const config = require('./config.json');
 
 const UserError = require("./src/UserError");
+const commandsExecuted = require("./src/commandsExecuted");
 const fs = require("fs");
 const nanoid = require('nanoid');
 const DBL = require("dblapi.js");
@@ -54,6 +55,8 @@ client.on('message', async (msg) => {
 
   // Return if the command does not exist
   if (!keys.has(commandHit)) return;
+
+  commandsExecuted.increment();
 
   // Fires the function associated to the command.
   try {

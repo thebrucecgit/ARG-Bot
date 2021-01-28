@@ -1,5 +1,6 @@
 const version = require("../package.json").version;
 const { MessageEmbed } = require("discord.js");
+const commandsExecuted = require('../src/commandsExecuted');
 module.exports = {
   hits: ['stats', "info"],
   name: "Statistics",
@@ -9,6 +10,7 @@ module.exports = {
       .addField("Users", client.users.cache.size, true)
       .addField("Channels", client.channels.cache.size, true)
       .addField("Guilds", client.guilds.cache.size, true)
+      .addField("Commands executed", commandsExecuted.num, true)
       .addField("Uptime", uptime(client));
   }
 };
