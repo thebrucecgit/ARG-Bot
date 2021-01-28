@@ -6,9 +6,9 @@ module.exports = {
   handler: (content, client) => {
     return new MessageEmbed()
       .setDescription(`ARG-Bot v${version}`)
-      .addField("Users", Object.keys(client.users).length, true)
-      .addField("Channels", Object.keys(client.channels).length, true)
-      .addField("Guilds", Object.keys(client.guilds).length, true)
+      .addField("Users", client.users.cache.size, true)
+      .addField("Channels", client.channels.cache.size, true)
+      .addField("Guilds", client.guilds.cache.size, true)
       .addField("Uptime", uptime(client));
   }
 };
