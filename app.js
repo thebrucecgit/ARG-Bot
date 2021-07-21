@@ -7,10 +7,8 @@ const UserError = require("./src/UserError");
 const commandsExecuted = require("./src/commandsExecuted");
 const fs = require("fs");
 const nanoid = require('nanoid');
-const DBL = require("dblapi.js");
 
 const client = new Client();
-// const dbl = new DBL(process.env.dbapikey, client);
 const keys = new Map();
 const commands = [];
 
