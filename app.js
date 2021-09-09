@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { Client, Intents } = require("discord.js");
-const token = process.env.TOKEN;
+const { TOKEN } = process.env;
 const config = require("./config.json");
 
 const UserError = require("./src/UserError");
@@ -61,4 +61,4 @@ client.on("ready", () => {
   client.user.setActivity(config.bot.statusMessage, { type: "WATCHING" });
 });
 
-client.login(token);
+client.login(TOKEN);
