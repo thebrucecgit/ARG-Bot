@@ -1,10 +1,6 @@
 {
   "bot": {
-    "statusMessage": "!help for commands",
+    "statusMessage": "/help for commands",
     "embedColor": "#7289DA"
-  },
-  "admins": [
-    "338543472099196928",
-    "213928278497558528"
-  ]
+  }
 }

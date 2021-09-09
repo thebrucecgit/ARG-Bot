@@ -1,22 +1,50 @@
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const MessageEmbed = require("../src/MessageEmbed");
 module.exports = {
-  hits: ['help', 'commands', 'cmds'],
+  cmd: new SlashCommandBuilder().setName("help").setDescription("Help menu"),
+  hits: ["help", "commands", "cmds"],
   name: "Help Menu",
-  handler: () => new MessageEmbed()
-    .addField('!b64en or !b64de', "Base 64 Encode or Decode", true)
-    .addField('!b32en or !b32de', "Base32 Encode or Decode", true)
-    .addField('!MoEn or !MoDe', "Morse Code Encode or Decode", true)
-    .addField('!binEn or binDe', "Binary Encode or Decode", true)
-    .addField('!ASCIIEn or !ASCIIDe', "ASCII Dec. Encode or Decode", true)
-    .addField('!Atbash or !atb', "At-bash Encode and Decode", true)
-    .addField('!Anag', "Finding English Anagrams", true)
-    .addField('!Rot [1-26]', "Rotate a cypher w/ key", true)
-    .addField('!RT or !RevText', "Reverse the text", true)
-    .addField('!Uppercase or !upc', 'Return Uppercase Letters')
-    .addField('!Wikipedia', "Search Wikipedia", true)
-    .addField('!ping', "Pings Server", true)
-    .addField("Private encoding/decoding", "Simply PM the bot", true)
-    .addField("Support Server", "https://discord.gg/uDNJGxQ")
-    .setFooter("https://thebrucecgit.github.io/ARG-Bot/")
-    .setColor('#2976f2')
+  handler: async (interaction) => {
+    await interaction.reply({
+      embeds: [
+        new MessageEmbed()
+          .addField(
+            "/base64encode or /base64decode",
+            "Base 64 Encode or Decode",
+            true
+          )
+          .addField(
+            "/base32encode or /base32decode",
+            "Base32 Encode or Decode",
+            true
+          )
+          .addField(
+            "/morseencode or /morsedecode",
+            "Morse Code Encode or Decode",
+            true
+          )
+          .addField(
+            "/binaryencode or /binarydecode",
+            "Binary Encode or Decode",
+            true
+          )
+          .addField(
+            "/asciiencode or /asciidecode",
+            "ASCII Dec. Encode or Decode",
+            true
+          )
+          .addField("/atbash", "At-bash Encode and Decode", true)
+          .addField("/anagram", "Finding English Anagrams", true)
+          .addField("/rotate", "Rotate a cipher w/ key", true)
+          .addField("/reverse", "Reverse the text", true)
+          .addField("/uppercase", "Return Uppercase Letters")
+          .addField("/wikipedia", "Search Wikipedia", true)
+          .addField("/ping", "Pings Server", true)
+          .addField("Private encoding/decoding", "Simply PM the bot", true)
+          .addField("Support Server", "https://discord.gg/uDNJGxQ")
+          .setFooter("https://thebrucecgit.github.io/ARG-Bot/")
+          .setColor("#2976f2"),
+      ],
+    });
+  },
 };

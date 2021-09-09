@@ -1,15 +1,29 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const BaseCommand = require("../src/BaseCommand");
 
 module.exports = {
-  hits: ['upc', 'uppercase', 'upcase'],
+  cmd: new SlashCommandBuilder()
+    .setName("uppercase")
+    .setDescription("Uppercase text")
+    .addStringOption((option) =>
+      option.setName("input").setDescription("Input text").setRequired(true)
+    ),
+  hits: ["upc", "uppercase", "upcase"],
   name: "Uppercase Letters Only",
-  handler: (content) => {
+  async handler(interaction) {
+    const input = interaction.options.getString("input");
     const output = [];
     const letters = /^[A-Za-z]+$/;
-    for (let i = 0; i < content.length; i++) {
-      if (content[i].match(letters) && content[i] === content[i].toUpperCase())
-        output.push(content[i]);
+    for (let i = 0; i < input.length; i++) {
+      if (input[i].match(letters) && input[i] === input[i].toUpperCase())
+        output.push(input[i]);
     }
-    return new BaseCommand(content, output.join(""));
-  }
+    await interaction.reply({
+      embeds: [
+        new BaseCommand(input, output.join("")).setTitle(
+          "Uppercase Letters Only"
+        ),
+      ],
+    });
+  },
 };

@@ -1,15 +1,34 @@
-const rot = require('rot');
-const UserError = require("../src/UserError");
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const rot = require("rot");
 const BaseCommand = require("../src/BaseCommand");
 module.exports = {
-  hits: ['rot', 'rotate'],
-  name: "Rotational Cypher",
-  handler(content) {
-    const cypher = parseInt(content.split(' ')[0]);
-    if (Object.is(cypher, NaN)) throw new UserError("Missing rotational integer");
-    let modulated = cypher % 26;
-    if (modulated < 0) modulated += 26;
-    const text = content.split(' ').splice(1).join(' ');
-    return new BaseCommand(text, rot(text, modulated)).addField("Rotation", cypher);
-  }
+  cmd: new SlashCommandBuilder()
+    .setName("rotate")
+    .setDescription("Decode / encode rotational cipher")
+    .addIntegerOption((option) =>
+      option
+        .setName("rotation")
+        .setDescription("The number to rotate the cipher by")
+        .setRequired(true)
+    )
+    .addStringOption((option) =>
+      option.setName("input").setDescription("Input text").setRequired(true)
+    ),
+  hits: ["rot", "rotate"],
+  name: "Rotational Cipher",
+  async handler(interaction) {
+    const rotation = interaction.options.getInteger("rotation");
+    const input = interaction.options.getString("input");
+
+    let modulation = rotation % 26;
+    if (modulation < 0) modulation += 26;
+
+    await interaction.reply({
+      embeds: [
+        new BaseCommand(input, rot(input, modulation))
+          .addField("Rotation", rotation.toString())
+          .setTitle("Rotational Cipher"),
+      ],
+    });
+  },
 };

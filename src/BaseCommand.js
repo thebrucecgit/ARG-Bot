@@ -1,10 +1,10 @@
-const { MessageEmbed } = require("discord.js");
+const MessageEmbed = require("./MessageEmbed");
 const UserError = require("./UserError");
 class BaseCommand extends MessageEmbed {
   constructor(input, output) {
+    super();
     if (!input) throw new UserError("Missing input");
     if (!output) output = "\u200b";
-    super();
     this.addField("Input", `\`${input}\``);
     this.addField("Output", `\`${output}\``);
   }

@@ -1,8 +1,17 @@
-const { MessageEmbed } = require("discord.js");
+const { SlashCommandBuilder } = require("@discordjs/builders");
+
 module.exports = {
-  hits: ['ping', 'pong'],
+  cmd: new SlashCommandBuilder().setName("ping").setDescription("Pings server"),
+  hits: ["ping", "pong"],
   name: "Ping",
-  handler: (content, client, msg) => {
-    return new MessageEmbed().setDescription(`The bot is online. ${new Date() - msg.createdAt}ms`);
+  async handler(interaction) {
+    const sent = await interaction.deferReply({
+      fetchReply: true,
+    });
+    await interaction.editReply(
+      `Pong! Round trip latency: ${
+        new Date(sent.timestamp) - new Date(interaction.createdAt)
+      }ms`
+    );
   },
 };

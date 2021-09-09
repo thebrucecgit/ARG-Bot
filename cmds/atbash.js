@@ -1,18 +1,28 @@
-const wiz = require('atbash-wizard');
-const BaseCommand = require('../src/BaseCommand');
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const wiz = require("atbash-wizard");
+const BaseCommand = require("../src/BaseCommand");
 module.exports = {
-  hits: ['atbash', 'atb'],
+  cmd: new SlashCommandBuilder()
+    .setName("atbash")
+    .setDescription("Atbash encoding and decoding")
+    .addStringOption((option) =>
+      option.setName("input").setDescription("Input text").setRequired(true)
+    ),
+  hits: ["atbash", "atb"],
   name: "Atbash",
-  handler: (content) => {
+  handler: async (interaction) => {
+    const input = interaction.options.getString("input");
     const params = {
-      word: content,
-      simon: true
+      word: input,
+      simon: true,
     };
     let output;
     wiz.wizard(params, (err, data) => {
       if (err) throw err;
       else output = data;
     });
-    return new BaseCommand(content, output);
-  }
+    await interaction.reply({
+      embeds: [new BaseCommand(input, output).setTitle("Atbash")],
+    });
+  },
 };

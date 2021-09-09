@@ -1,18 +1,27 @@
 const version = require("../package.json").version;
-const { MessageEmbed } = require("discord.js");
-const commandsExecuted = require('../src/commandsExecuted');
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const MessageEmbed = require("../src/MessageEmbed");
+const commandsExecuted = require("../src/commandsExecuted");
 module.exports = {
-  hits: ['stats', "info"],
+  cmd: new SlashCommandBuilder()
+    .setName("stats")
+    .setDescription("Fetches bot stats across guilds"),
+  hits: ["stats", "info"],
   name: "Statistics",
-  handler: (content, client) => {
-    return new MessageEmbed()
-      .setDescription(`ARG-Bot v${version}`)
-      .addField("Users", client.users.cache.size, true)
-      .addField("Channels", client.channels.cache.size, true)
-      .addField("Guilds", client.guilds.cache.size, true)
-      .addField("Commands executed", commandsExecuted.num, true)
-      .addField("Uptime", uptime(client));
-  }
+  handler: async (interaction, client) => {
+    await interaction.reply({
+      embeds: [
+        new MessageEmbed()
+          .setTitle("Statistics")
+          .setDescription(`ARG-Bot v${version}`)
+          .addField("Users", client.users.cache.size.toString(), true)
+          .addField("Channels", client.channels.cache.size.toString(), true)
+          .addField("Guilds", client.guilds.cache.size.toString(), true)
+          .addField("Commands executed", commandsExecuted.num.toString(), true)
+          .addField("Uptime", uptime(client)),
+      ],
+    });
+  },
 };
 function uptime(client) {
   let totalSeconds = Math.floor(client.uptime / 1000);
@@ -22,5 +31,5 @@ function uptime(client) {
   totalSeconds %= 3600;
   let minutes = Math.floor(totalSeconds / 60);
   let seconds = totalSeconds % 60;
-  return(`${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`);
+  return `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 }

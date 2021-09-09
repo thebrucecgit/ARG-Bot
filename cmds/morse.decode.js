@@ -1,7 +1,21 @@
-const morse = require('morse');
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const morse = require("morse");
 const BaseCommand = require("../src/BaseCommand");
 module.exports = {
-  hits: ['mode', 'morsede', 'morsedecode'],
+  cmd: new SlashCommandBuilder()
+    .setName("morsedecode")
+    .setDescription("Decode morse code")
+    .addStringOption((option) =>
+      option.setName("input").setDescription("Input text").setRequired(true)
+    ),
+  hits: ["mode", "morsede", "morsedecode"],
   name: "Morse Decoding",
-  handler: (content) => new BaseCommand(content, morse.decode(content)),
+  handler: async (interaction) => {
+    const input = interaction.options.getString("input");
+    await interaction.reply({
+      embeds: [
+        new BaseCommand(input, morse.decode(input)).setTitle("Morse Decoding"),
+      ],
+    });
+  },
 };
