@@ -23,7 +23,7 @@
     "dotenv": "^10.0.0",
     "encodeurl": "^1.0.2",
     "got": "^11.8.2",
-    "morse": "^0.1.0",
+    "morse-converter": "^1.2.0",
     "rot": "^0.1.0",
     "thirty-two": "^1.0.2",
     "wikijs": "^6.2.1"

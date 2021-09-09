@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const morse = require("morse");
+const morse = require("morse-converter");
 const BaseCommand = require("../src/BaseCommand");
 module.exports = {
   cmd: new SlashCommandBuilder()
