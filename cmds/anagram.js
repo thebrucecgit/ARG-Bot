@@ -1,5 +1,5 @@
 const encodeUrl = require("encodeurl");
-const got = require("got");
+const got = import("got");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const UserError = require("../src/UserError");
 const BaseCommand = require("../src/BaseCommand");
