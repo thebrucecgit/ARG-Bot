@@ -1,5 +1,4 @@
 const encodeUrl = require("encodeurl");
-const got = import("got");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const UserError = require("../src/UserError");
 const BaseCommand = require("../src/BaseCommand");
@@ -24,7 +23,8 @@ module.exports = {
       );
 
     await interaction.deferReply();
-
+    
+    const got = await import("got");
     const response = JSON.parse(
       (await got(encodeUrl("http://anagramica.com/best/" + input))).body
     );
