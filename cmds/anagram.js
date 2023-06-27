@@ -24,7 +24,7 @@ module.exports = {
 
     await interaction.deferReply();
     
-    const got = await import("got");
+    const { default: got } = (await import("got"));
     const response = JSON.parse(
       (await got(encodeUrl("http://anagramica.com/best/" + input))).body
     );
